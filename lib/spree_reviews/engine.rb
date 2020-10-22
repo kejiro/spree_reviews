@@ -10,6 +10,11 @@ module SpreeReviews
       Spree::Reviews::Config = Spree::ReviewSetting.new
     end
 
+    initializer 'spree.reviews.attributes', after: 'spree.environment' do
+      product_attributes = Spree::Api::ApiHelpers.product_attributes + [:avg_rating, :reviews_count]
+      Spree::Api::ApiHelpers.class_variable_set(:@@product_attributes, product_attributes)
+    end
+
     def self.activate
       cache_klasses = %W(#{config.root}/app/**/*_decorator*.rb #{config.root}/app/overrides/*.rb)
       Dir.glob(cache_klasses) do |klass|
