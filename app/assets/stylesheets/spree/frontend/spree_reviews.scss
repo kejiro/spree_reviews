@@ -45,12 +45,12 @@ div.rating-cancel, div.star-rating {
   overflow: hidden
 }
 
-div.rating-cancel, div.rating-cancel a {
-  background: transparent url(<%= asset_path('store/reviews/delete.gif') %>) no-repeat scroll 0 -1px;
+div.rating-cancel a {
+  background: transparent asset_url('reviews/cancel-circle.svg') no-repeat scroll 0 -1px;
 }
 
 div.star-rating, div.star-rating a {
-  background: url(<%= asset_path('store/reviews/star.gif') %>) no-repeat 0 0px
+  background: asset_url("reviews/star-empty.svg") no-repeat 0 0;
 }
 
 div.rating-cancel a, div.star-rating a {
@@ -61,12 +61,16 @@ div.rating-cancel a, div.star-rating a {
   border: 0
 }
 
-div.star-rating-on a {
-  background-position: 0 -32px !important
+.rating-cancel.star-rating-hover a {
+  background: asset_url("reviews/cancel-circle2.svg") no-repeat 0 0;
 }
 
-div.star-rating-hover a {
-  background-position: 0 -32px
+.star-rating.star-rating-on a {
+  background: asset_url("reviews/star-full.svg") no-repeat 0 0;
+}
+
+.star-rating.star-rating-hover a {
+  background: asset_url("reviews/star-full.svg") no-repeat 0 0;
 }
 
 /* Read Only CSS */
@@ -79,5 +83,3 @@ div.star-rating {
   background: transparent !important;
   overflow: hidden !important
 }
-
-/* END jQuery.Rating Plugin CSS */
