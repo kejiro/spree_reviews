@@ -28,7 +28,7 @@ module Spree
         flash[:notice] = Spree.t(:review_successfully_submitted)
         redirect_to spree.product_path(@product)
       else
-        render :new
+        render :new, status: :unprocessable_entity
       end
     end
 
