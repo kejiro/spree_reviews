@@ -18,11 +18,6 @@ module SpreeReviews
       Spree::Reviews::Config = Spree::ReviewSetting.new
     end
 
-    initializer 'spree.reviews.attributes', after: 'spree.environment' do
-      product_attributes = Spree::Api::ApiHelpers.product_attributes + [:avg_rating, :reviews_count]
-      Spree::Api::ApiHelpers.class_variable_set(:@@product_attributes, product_attributes)
-    end
-
     def self.activate
       Dir.glob(File.join(File.dirname(__FILE__), '../../app/**/*_decorator*.rb')) do |c|
         Rails.configuration.cache_classes ? require(c) : load(c)
